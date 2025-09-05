@@ -6,13 +6,14 @@ import { useDispatch } from "react-redux";
 import { Add } from "../redux/actions/action";
 
 const Home = () => {
-
+    
     const [data, setData] = useState("");
     // console.log(data);
 
     const dispatch = useDispatch();
 
     const addData = () => {
+        
         dispatch(Add(data));
         setData("")
     }

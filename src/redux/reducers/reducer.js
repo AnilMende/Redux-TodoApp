@@ -13,6 +13,23 @@ export const todoreducers = (state = initialState, action) => {
                 User_data: [...state.User_data, action.payload]
             }
 
+        case "REMOVE_DATA":
+
+            const dltdata = state.User_data.filter((element, val) => val !== action.payload)
+
+            return {
+                ...state,
+                User_data: dltdata
+            }
+
+        case "UPDATE_DATA":
+
+            const updatedata = state.User_data.map((element, val) => val === action.d ? action.payload : element)
+
+            return {
+                ...state,
+                User_data: updatedata
+            }
         default:
             return state;
     }

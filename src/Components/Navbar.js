@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { DeleteContext } from "./Context/ContextProvider";
+import Alert from 'react-bootstrap/Alert';
 // import { textAlign } from "@mui/system";
 
 const Navbar = () => {
+
+    const { dlttask, setDlttask } = useContext(DeleteContext);
+    // console.log(dlttask)
 
     return (
         <>
@@ -30,6 +35,12 @@ const Navbar = () => {
                     </Toolbar>
                 </AppBar>
             </Box>
+
+            {
+                dlttask ? <Alert variant="danger" onClose={() => setDlttask(false)} dismissible>
+                    <Alert.Heading>Your Task is Removed Successfully...</Alert.Heading>
+                </Alert> : ""
+            }
         </>
     )
 }
